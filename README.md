@@ -1,224 +1,596 @@
-# Waste-Management-System-dApp
+# ♻️ Waste Management System dApp
 
-# Waste Management System dApp
-
-A blockchain-based waste management tracking system built with Ethereum, React, and Node.js. Features collection tracking, recycling verification, and automated reporting for complete transparency.
-
-## 🌍 Features
-
-- **Collection Tracking**: Track waste collection activities with location data and weight records
-- **Recycling Verification**: Verify and monitor recycling processes with reward system
-- **Automated Reporting**: Generate monthly and yearly reports with environmental impact metrics
-- **Token Rewards**: ERC20-based reward system for successful collections and recycling
-- **IPFS Integration**: Distributed storage for location and process documentation
-- **Blockchain Transparency**: All activities recorded immutably on Ethereum
-
-## 🏗️ Project Structure
-
-```
-waste-management-dapp/
-├── contracts/              # Solidity smart contracts
-│   ├── WasteToken.sol          # ERC20 token for rewards
-│   ├── WasteCollection.sol      # Collection tracking contract
-│   ├── RecyclingVerification.sol # Recycling verification contract
-│   ├── ReportingService.sol     # Automated reporting contract
-│   └── hardhat.config.js        # Hardhat configuration
-├── backend/                # Node.js API server
-│   ├── config/
-│   ├── models/             # MongoDB schemas
-│   ├── routes/             # API endpoints
-│   ├── services/           # Business logic
-│   └── index.js            # Express server
-├── frontend/               # React web application
-│   ├── public/
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   ├── store/          # Zustand state management
-│   │   └── App.jsx
-│   └── package.json
-└── docs/                   # Documentation
-```
-
-## 🛠️ Tech Stack
-
-### Smart Contracts
-- **Solidity 0.8.0**
-- **OpenZeppelin Contracts**
-- **Hardhat** (development framework)
-
-### Backend
-- **Node.js + Express.js**
-- **MongoDB** (database)
-- **ethers.js** (blockchain interaction)
-- **IPFS** (distributed storage)
-
-### Frontend
-- **React 18**
-- **TailwindCSS** (styling)
-- **Zustand** (state management)
-- **ethers.js** (Web3 integration)
-- **Axios** (HTTP client)
-
-## 📦 Installation
-
-### Prerequisites
-- Node.js >= 16.0.0
-- MongoDB >= 4.4
-- Hardhat
-- MetaMask or similar Web3 wallet
-
-### Smart Contracts Setup
-
-```bash
-cd contracts
-npm install
-npx hardhat compile
-```
-
-Deploy locally:
-```bash
-npx hardhat run deploy.js --network localhost
-```
-
-### Backend Setup
-
-```bash
-cd backend
-npm install
-cp .env.example .env
-# Update .env with your configuration
-npm run dev
-```
-
-Required environment variables:
-```
-MONGODB_URI=mongodb://localhost:27017/waste-management
-ETHEREUM_RPC_URL=http://localhost:8545
-DEPLOYER_PRIVATE_KEY=your-private-key
-```
-
-### Frontend Setup
-
-```bash
-cd frontend
-npm install
-cp .env.example .env
-# Update .env with contract addresses and API URL
-npm start
-```
-
-The app will open at `http://localhost:3000`
-
-## 🚀 Running the Application
-
-1. **Start Hardhat Node** (in a terminal):
-```bash
-npx hardhat node
-```
-
-2. **Deploy Contracts** (in another terminal):
-```bash
-npx hardhat run contracts/deploy.js --network localhost
-```
-
-3. **Start Backend** (in another terminal):
-```bash
-cd backend
-npm run dev
-```
-
-4. **Start Frontend** (in another terminal):
-```bash
-cd frontend
-npm start
-```
-
-5. **Connect MetaMask** to localhost:8545 and import test accounts from Hardhat
-
-## 📚 API Endpoints
-
-### Collectors
-- `POST /api/collectors/register` - Register a new collector
-- `GET /api/collectors/:walletAddress` - Get collector profile
-- `GET /api/collectors` - List all collectors
-- `PUT /api/collectors/:walletAddress` - Update collector profile
-- `GET /api/collectors/:walletAddress/stats` - Get collector statistics
-
-### Collections
-- `POST /api/collections/record` - Record waste collection
-- `GET /api/collections` - Get all collections
-- `GET /api/collections/:collectionId` - Get single collection
-- `PUT /api/collections/:collectionId/verify` - Verify collection
-- `GET /api/collections/stats/summary` - Get collection statistics
-
-### Recycling
-- `POST /api/recycling/submit` - Submit recycling record
-- `GET /api/recycling` - Get all recycling records
-- `PUT /api/recycling/:recordId/verify` - Verify recycling record
-- `GET /api/recycling/stats/summary` - Get recycling statistics
-
-## 📋 Smart Contract Features
-
-### WasteToken (ERC20)
-- Token minting for waste collection rewards
-- Recycling reward tracking
-- Reward claiming mechanism
-
-### WasteCollection
-- Record waste collection activities
-- Multiple waste types support
-- Collection verification system
-- Reward calculation per waste type
-- Collector registration and statistics
-
-### RecyclingVerification
-- Submit recycling records
-- Verification approval/rejection
-- Material type tracking
-- Statistics per material
-- Environmental impact calculation
-
-### ReportingService
-- Monthly and yearly report generation
-- Environmental impact metrics
-- Collection and recycling statistics
-- IPFS hash storage for reports
-
-## 🔐 Security Considerations
-
-- Uses OpenZeppelin's audited contracts
-- ReentrancyGuard on state-changing functions
-- Input validation on all endpoints
-- Private key management via environment variables
-- CORS configuration for API
-- Helmet middleware for HTTP security
-
-## 📊 Environmental Impact Metrics
-
-The system calculates:
-- **CO2 Saved**: 3 kg per kg of material recycled
-- **Water Saved**: 10 liters per kg of material recycled
-- **Energy Saved**: 2 kWh per kg of material recycled
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit changes
-4. Push to the branch
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License.
-
-## 📞 Support
-
-For issues and questions, please open a GitHub issue.
+> A decentralized blockchain-powered waste management ecosystem that ensures transparency, accountability, and sustainability in waste collection, recycling, and environmental impact reporting.
 
 ---
 
-**Made with ♻️ for a sustainable future**
+## 🌍 Overview
 
+The Waste Management System dApp is a Web3-based platform designed to modernize waste management processes through blockchain technology. The system enables citizens, waste collectors, recycling facilities, and government agencies to collaborate within a transparent and tamper-proof ecosystem.
+
+By leveraging Ethereum smart contracts, IPFS distributed storage, and a MERN stack application, the platform records every waste collection and recycling activity on-chain while rewarding participants with utility tokens for sustainable behavior.
+
+---
+
+## 🎯 Objectives
+
+* Improve transparency in waste collection and recycling.
+* Reduce fraud and misreporting in waste management processes.
+* Incentivize sustainable waste disposal practices.
+* Generate immutable environmental impact records.
+* Support smart-city sustainability initiatives.
+* Enable data-driven environmental policy decisions.
+
+---
+
+## 🚀 Key Features
+
+### ♻️ Waste Collection Tracking
+
+* Record waste collection activities on blockchain.
+* GPS-enabled collection tracking.
+* Waste weight and category management.
+* Collector performance monitoring.
+* Digital collection receipts.
+
+### 🏭 Recycling Verification
+
+* Verify recycling processes transparently.
+* Material-specific recycling records.
+* Multi-level approval workflow.
+* Recycling center registration.
+* Recycling completion certificates.
+
+### 💰 Token Reward System
+
+* ERC20 utility token rewards.
+* Automated reward distribution.
+* Collector incentive programs.
+* Recycling bonus rewards.
+* Sustainability achievement rewards.
+
+### 📊 Automated Reporting
+
+* Monthly environmental reports.
+* Yearly sustainability reports.
+* Waste analytics dashboards.
+* Carbon footprint calculations.
+* Government compliance reporting.
+
+### 🌐 IPFS Integration
+
+* Decentralized document storage.
+* Collection proof uploads.
+* Recycling evidence management.
+* Report archival system.
+* Immutable file references.
+
+### 🔐 Blockchain Transparency
+
+* Immutable records.
+* Smart contract automation.
+* Real-time activity tracking.
+* Audit-ready history.
+* Public verification system.
+
+---
+
+## 👥 User Roles
+
+### Citizens
+
+* Report waste disposal requests.
+* Schedule waste pickups.
+* Track recycling contributions.
+* Earn sustainability rewards.
+* View environmental impact.
+
+### Waste Collectors
+
+* Register collection activities.
+* Verify waste pickups.
+* Earn collection rewards.
+* Track performance metrics.
+* Access route management.
+
+### Recycling Centers
+
+* Receive recyclable materials.
+* Submit recycling records.
+* Verify processing completion.
+* Earn recycling incentives.
+* Generate compliance reports.
+
+### Government Agencies
+
+* Monitor waste management activities.
+* Review environmental statistics.
+* Generate regulatory reports.
+* Audit waste processing workflows.
+* Track sustainability targets.
+
+### Administrators
+
+* Manage system configurations.
+* Register authorized facilities.
+* Configure reward mechanisms.
+* Monitor platform operations.
+* Manage user permissions.
+
+---
+
+## 🏗️ System Architecture
+
+```text
+┌──────────────────────────────┐
+│       React Frontend         │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│      Express Backend         │
+└──────────────┬───────────────┘
+               │
+               ▼
+┌──────────────────────────────┐
+│      Ethereum Blockchain     │
+└──────────────┬───────────────┘
+               │
+     ┌─────────┴─────────┐
+     ▼                   ▼
+┌─────────────┐   ┌─────────────┐
+│   MongoDB   │   │    IPFS     │
+└─────────────┘   └─────────────┘
+```
+
+---
+
+## 📂 Project Structure
+
+```text
+waste-management-dapp/
+│
+├── contracts/
+│   ├── WasteToken.sol
+│   ├── WasteCollection.sol
+│   ├── RecyclingVerification.sol
+│   ├── ReportingService.sol
+│   ├── deploy.js
+│   └── hardhat.config.js
+│
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── services/
+│   ├── utils/
+│   └── index.js
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── services/
+│   │   ├── store/
+│   │   ├── hooks/
+│   │   └── App.jsx
+│   └── package.json
+│
+├── docs/
+├── scripts/
+├── tests/
+└── README.md
+```
+
+---
+
+## 🛠️ Technology Stack
+
+### Blockchain Layer
+
+* Solidity
+* Ethereum
+* Hardhat
+* OpenZeppelin
+* Ethers.js
+
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT Authentication
+
+### Frontend
+
+* React.js
+* TailwindCSS
+* Zustand
+* Axios
+* React Router
+
+### Storage
+
+* IPFS
+* Pinata
+
+### DevOps
+
+* Docker
+* GitHub Actions
+* Kubernetes
+* AWS
+
+---
+
+## 📜 Smart Contracts
+
+### WasteToken.sol
+
+ERC20 reward token used for sustainability incentives.
+
+Features:
+
+* Minting rewards
+* Staking support
+* Reward claims
+* Governance integration
+
+### WasteCollection.sol
+
+Handles waste collection records.
+
+Features:
+
+* Collector registration
+* Collection recording
+* Weight tracking
+* Reward calculations
+* Verification workflow
+
+### RecyclingVerification.sol
+
+Manages recycling validation.
+
+Features:
+
+* Recycling submissions
+* Verification approvals
+* Material categorization
+* Environmental calculations
+
+### ReportingService.sol
+
+Generates environmental reports.
+
+Features:
+
+* Monthly reports
+* Yearly reports
+* Impact metrics
+* IPFS storage
+
+---
+
+## ♻️ Supported Waste Categories
+
+* Plastic Waste
+* Paper Waste
+* Glass Waste
+* Metal Waste
+* Organic Waste
+* Electronic Waste
+* Hazardous Waste
+* Construction Waste
+
+---
+
+## 💰 Tokenomics
+
+### WasteToken (WST)
+
+#### Total Supply
+
+100,000,000 WST
+
+#### Distribution
+
+| Category             | Allocation |
+| -------------------- | ---------- |
+| Community Rewards    | 40%        |
+| Recycling Incentives | 20%        |
+| Development Fund     | 15%        |
+| Ecosystem Growth     | 10%        |
+| Team                 | 10%        |
+| Reserve              | 5%         |
+
+### Reward Structure
+
+| Activity               | Reward    |
+| ---------------------- | --------- |
+| Plastic Collection     | 10 WST/kg |
+| Paper Collection       | 5 WST/kg  |
+| Glass Collection       | 8 WST/kg  |
+| Metal Collection       | 15 WST/kg |
+| E-Waste Collection     | 25 WST/kg |
+| Recycling Verification | 50 WST    |
+
+---
+
+## 📊 Environmental Impact Metrics
+
+The system automatically calculates:
+
+### Carbon Reduction
+
+* 3 kg CO₂ saved per kg recycled
+
+### Water Conservation
+
+* 10 liters saved per kg recycled
+
+### Energy Conservation
+
+* 2 kWh saved per kg recycled
+
+### Sustainability Score
+
+Calculated based on:
+
+* Collection efficiency
+* Recycling rate
+* Environmental contribution
+* Community participation
+
+---
+
+## 🔒 Security Features
+
+### Smart Contract Security
+
+* ReentrancyGuard
+* AccessControl
+* Ownable
+* Pausable
+* Emergency Withdrawal
+* Upgradeable Contracts
+
+### Backend Security
+
+* JWT Authentication
+* API Rate Limiting
+* Helmet Middleware
+* Input Validation
+* CORS Protection
+* MongoDB Injection Protection
+
+### Web3 Security
+
+* Wallet Signature Verification
+* Multi-Signature Administration
+* Secure Reward Distribution
+* Event Monitoring
+
+---
+
+## 📱 Dashboard Modules
+
+### Citizen Dashboard
+
+* Pickup Requests
+* Reward Balance
+* Environmental Impact
+* Recycling History
+
+### Collector Dashboard
+
+* Assigned Collections
+* Collection Statistics
+* Route Management
+* Earnings Overview
+
+### Recycling Dashboard
+
+* Material Processing
+* Verification Queue
+* Environmental Metrics
+
+### Government Dashboard
+
+* City Analytics
+* Compliance Reports
+* Sustainability KPIs
+
+### Admin Dashboard
+
+* User Management
+* Reward Management
+* Contract Monitoring
+* Platform Analytics
+
+---
+
+## 🔄 Workflow
+
+```text
+Citizen Reports Waste
+        │
+        ▼
+Collector Accepts Request
+        │
+        ▼
+Waste Collection Completed
+        │
+        ▼
+Collection Recorded On Blockchain
+        │
+        ▼
+Reward Tokens Distributed
+        │
+        ▼
+Waste Sent To Recycling Facility
+        │
+        ▼
+Recycling Verified
+        │
+        ▼
+Environmental Metrics Updated
+        │
+        ▼
+Reports Generated
+```
+
+---
+
+## 🧪 Testing
+
+### Smart Contracts
+
+```bash
+npx hardhat test
+```
+
+### Backend
+
+```bash
+npm run test
+```
+
+### Frontend
+
+```bash
+npm run test
+```
+
+Testing Coverage:
+
+* Unit Testing
+* Integration Testing
+* Smart Contract Testing
+* API Testing
+* UI Testing
+* Security Testing
+
+---
+
+## 🚀 Deployment
+
+### Local Development
+
+```bash
+npx hardhat node
+npx hardhat run scripts/deploy.js --network localhost
+```
+
+### Testnet Deployment
+
+Supported Networks:
+
+* Sepolia
+* Polygon Mumbai
+* Base Sepolia
+
+### Production Deployment
+
+Infrastructure:
+
+* Ethereum Mainnet
+* Polygon Mainnet
+* MongoDB Atlas
+* AWS EC2
+* Docker Containers
+* Kubernetes Cluster
+
+---
+
+## 📈 Future Roadmap
+
+### Phase 1
+
+* Waste collection tracking
+* Collector registration
+* Reward token system
+
+### Phase 2
+
+* Recycling verification
+* IPFS integration
+* Reporting engine
+
+### Phase 3
+
+* Mobile application
+* GPS tracking
+* Route optimization
+
+### Phase 4
+
+* DAO governance
+* NFT sustainability certificates
+* Carbon credit marketplace
+
+### Phase 5
+
+* AI waste classification
+* IoT smart bins
+* Smart city integration
+* Global deployment
+
+---
+
+## 🌟 Advanced Features
+
+### AI Waste Classification
+
+* Image recognition
+* Waste categorization
+* Recycling recommendations
+
+### IoT Smart Bins
+
+* Fill-level monitoring
+* Automated pickup requests
+* Predictive maintenance
+
+### Carbon Credit Marketplace
+
+* Carbon offset tracking
+* ESG reporting
+* Sustainability trading
+
+### DAO Governance
+
+* Community voting
+* Proposal system
+* Treasury management
+
+---
+
+## 🤝 Contributing
+
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Push to your branch.
+5. Open a Pull Request.
+
+---
+
+## 📄 License
+
+Licensed under the MIT License.
+
+---
+
+## 🌎 Impact
+
+This platform helps build a transparent, sustainable, and decentralized waste management ecosystem by rewarding environmentally responsible behavior while providing governments and organizations with trustworthy environmental data.
+
+---
+
+### Built with ❤️ using Ethereum, React, Node.js, MongoDB, IPFS, and Web3 Technology for a Sustainable Future.
