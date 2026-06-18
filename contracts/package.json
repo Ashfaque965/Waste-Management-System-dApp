@@ -1,0 +1,20 @@
+{
+  "name": "waste-management-contracts",
+  "version": "1.0.0",
+  "description": "Smart contracts for Waste Management System dApp",
+  "scripts": {
+    "compile": "hardhat compile",
+    "deploy": "hardhat run scripts/deploy.js",
+    "test": "hardhat test"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.0.0",
+    "@nomicfoundation/hardhat-ethers": "^3.0.0",
+    "@nomicfoundation/hardhat-toolbox": "^3.0.0",
+    "@openzeppelin/contracts": "^4.9.0",
+    "@openzeppelin/hardhat-upgrades": "^1.17.0",
+    "chai": "^6.2.2",
+    "ethers": "^6.0.0",
+    "hardhat": "^2.14.0"
+  }
+}

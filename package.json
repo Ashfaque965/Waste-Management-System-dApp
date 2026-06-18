@@ -1,0 +1,30 @@
+{
+  "name": "waste-management-dapp",
+  "version": "1.0.0",
+  "description": "Blockchain-based waste management tracking system",
+  "scripts": {
+    "setup": "bash setup.sh",
+    "setup:win": "setup.bat",
+    "backend:dev": "cd backend && npm run dev",
+    "backend:start": "cd backend && npm start",
+    "frontend:start": "cd frontend && npm start",
+    "frontend:build": "cd frontend && npm run build",
+    "contracts:compile": "cd contracts && npm run compile",
+    "contracts:deploy": "cd contracts && npm run deploy",
+    "contracts:test": "cd contracts && npm run test",
+    "dev": "concurrently \"npm run backend:dev\" \"npm run frontend:start\"",
+    "hardhat:node": "cd contracts && npx hardhat node"
+  },
+  "devDependencies": {
+    "concurrently": "^7.6.0"
+  },
+  "keywords": [
+    "blockchain",
+    "ethereum",
+    "waste-management",
+    "sustainability",
+    "dapp"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}
